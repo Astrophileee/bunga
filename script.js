@@ -1,6 +1,7 @@
 const openButton = document.getElementById("openButton");
 const flowerStage = document.getElementById("flowerStage");
 const particleLayer = document.getElementById("particleLayer");
+const loveSong = document.getElementById("loveSong");
 const card = document.querySelector(".card");
 const flowerFrame = document.querySelector(".flower-frame");
 
@@ -48,10 +49,23 @@ function burstParticles() {
   }, 280);
 }
 
+function playLoveSong() {
+  if (!loveSong) {
+    return;
+  }
+
+  loveSong.currentTime = 0;
+  loveSong.volume = 0.82;
+  loveSong.play().catch(() => {
+    // Browser autoplay policies can still block playback on some devices.
+  });
+}
+
 openButton.addEventListener("click", () => {
   card.classList.add("opened");
   openButton.classList.add("is-hidden");
   flowerStage.classList.add("is-open");
+  playLoveSong();
   burstParticles();
 
   window.setTimeout(() => {
