@@ -56,8 +56,8 @@ function playLoveSong() {
 
   loveSong.currentTime = 0;
   loveSong.volume = 0.82;
-  loveSong.play().catch(() => {
-    // Browser autoplay policies can still block playback on some devices.
+  loveSong.play().catch((error) => {
+    console.error("Audio gagal diputar. Cek apakah lagu.mp3 berhasil dimuat di GitHub Pages.", error);
   });
 }
 
